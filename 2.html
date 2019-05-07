@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue.js--理解vue.js的生命周期</title>
+</head>
+<body>
+  <div id="app">
+   {{name}}
+   <p>{{'姓名：' + name+'年龄：'+ age}}</p>
+  </div>
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script type="text/javascript">
+   var app = new Vue({
+     el: '#app',
+     data: {
+       name: '张三',
+       url: '<a href="http://www.baidu.com">百度</a>',
+       age: 18,
+       isOK: true
+     }
+   })
+</script>
+</body>
+</html>
