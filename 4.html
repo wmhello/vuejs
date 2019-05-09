@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简单计算器-vue.js</title>
+</head>
+<body>
+   <div id="app">
+     <div>
+       <h2>货币转换</h2>
+       <p>人民币转美元，今天的汇率是1人民币={{hl}}美元</p>
+       <input type="text" v-model="memory1">  <span>{{memory1 | tran | join('￥')}}</span>
+        <br/>
+       <input type="text" disabled v-model="memory2"> <span>{{memory2 | tran | jion('$')}}</span>
+       <br/>
+       <p>{{tips}}</p>
+     </div>
+   </div>
+   <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+   <script type="text/javascript">
+     var app = new Vue({
+       el: '#app',
+       data: {  // 以数据为中心， 数据改变，界面就跟随改变
+         hl: 0.1476,
+         memory1: 0,
+         tips: ''
+       },
+       computed: {  // 计算器 ，结果要返回，给vue.js来进行使用
+         memory2: function(){
+           var result = this.memory1 * this.hl
+            return result.toFixed(2)
+         },
+       },
+       watch: {  // 数据监听器 执行相关操作
+          memory1: function(newValue, old) {
+           if (newValue > 10000) {
+             this.memory1 = 0
+             this.tips = '你输入的数据不能超过10000'
+           } else {
+             this.tips = ''
+           }
+          }
+       },
+       filters: {
+         join: function(value, params) {
+           return params + value
+         },
+         tran: function(value) {
+           return value
+         }
+       },
+       methods: {
+       }
+     })
+
+   </script>
+</body>
+</html>
