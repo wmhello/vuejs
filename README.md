@@ -5,4 +5,5 @@
 [第三节 数据绑定和事件绑定](./3.md)
 [第四节 过滤器](./4.md)
 [第五节 常用的指令](./5.md)
+[第六节 结合bootstrap和web storage来改进表单](./6.md)
 [Render函数](./render.md)

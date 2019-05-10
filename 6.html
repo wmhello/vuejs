@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>内容的增删改查</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <div class="row">
+        <form class="col-md-offset-2 col-md-8" @submit="addInfo('hello,world', $event)">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" class="form-control" v-model="username" placeholder="请输入姓名">
+          </div>
+          <div class="form-group">
+            <label>年龄</label>
+            <input type="number" class="form-control" v-model="age" placeholder="请输入年龄">
+          </div>
+          <div class="form-group">
+            <label>兴趣爱好</label>
+            <input type="text" class="form-control" v-model="favorite" placeholder="请输入兴趣爱好">
+          </div>
+          <div class="form-group">
+            <input type="submit" class="btn btn-success" value="增加"></input>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+          <table class="table table-bordered" >
+            <thead>
+              <tr>
+                <th>编号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>兴趣爱好</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-if="info.length !== 0">
+                <tr v-for="(item,index) in info">
+                  <td>{{index + 1}}</td>
+                  <td>{{item.username}}</td>
+                  <td>{{item.age}}</td>
+                  <td>{{item.favorite}}</td>
+                  <td><a href="#" @click="removeInfo(index)">删除</a></td>
+                </tr>
+              </template>
+              <template v-else>
+                <tr>
+                  <td colspan="5">没有任何内容</td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { // 以数据为中心， 数据改变，界面就跟随改变
+        username: '',
+        age: null,
+        favorite: '',
+        info: []
+      },
+      created: function(){
+        this.getData();
+      },
+      methods: {
+        removeInfo: function(index) {
+          if (window.confirm('该操作将删除指定的内容，是否继续')){
+            this.info.splice(index, 1)
+            this.save()
+          }
+        },
+        addInfo: function(tips, e) {
+          e.preventDefault();
+          var obj = {
+            username: this.username,
+            age: this.age,
+            favorite: this.favorite
+          }
+          this.info.push(obj)
+          this.save()
+          this.clearData()
+        },
+        save: function(){
+          var info = JSON.stringify(this.info)
+          localStorage.setItem('info', info)
+        },
+        clearData: function() {
+          this.username = ''
+          this.age = null
+          this.favorite = ''
+        },
+        getData: function(){
+          var info = window.localStorage.getItem('info')
+          if (info !== null) {
+            this.info = JSON.parse(info)
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
