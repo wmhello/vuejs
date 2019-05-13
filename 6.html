@@ -12,23 +12,23 @@
   <div class="container">
     <div id="app">
       <div class="row">
-        <form class="col-md-offset-2 col-md-8" @submit="addInfo('hello,world', $event)">
+        <div class="col-md-offset-2 col-md-8">
           <div class="form-group">
             <label>姓名</label>
-            <input type="text" class="form-control" v-model="username" placeholder="请输入姓名">
+            <input type="text" class="form-control"  @keyup.enter="goDom('age', $event)" v-model="username" placeholder="请输入姓名">
           </div>
           <div class="form-group">
             <label>年龄</label>
-            <input type="number" class="form-control" v-model="age" placeholder="请输入年龄">
+            <input type="number" class="form-control" ref="age" @keyup.enter="goDom('fav', $event)" v-model.number="age" placeholder="请输入年龄">
           </div>
           <div class="form-group">
             <label>兴趣爱好</label>
-            <input type="text" class="form-control" v-model="favorite" placeholder="请输入兴趣爱好">
+            <input type="text" class="form-control" ref="fav" @keyup.enter="addInfo" v-model="favorite" placeholder="请输入兴趣爱好">
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btn-success" value="增加"></input>
+            <button class="btn"  :class="{'btn-success': isComplete}"  v-html="title" @click="addInfo"></button>
           </div>
-        </form>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-offset-2 col-md-8">
@@ -74,24 +74,45 @@
         username: '',
         age: null,
         favorite: '',
-        info: []
+        info: [],
+        dom: '',
+        title: '等待',
+        isMark: false
       },
       created: function(){
         this.getData();
       },
+      computed: {
+        isComplete: function() {
+            if (this.username==='' || this.age === null || this.favorite === ''  ) {
+              this.title = "等待"
+              return false
+            } else {
+              this.title = "添加"
+              return true
+            }
+        }
+      },
       methods: {
+        goDom: function(dom,event){
+           this.$refs[dom].focus()
+        },
         removeInfo: function(index) {
           if (window.confirm('该操作将删除指定的内容，是否继续')){
             this.info.splice(index, 1)
             this.save()
           }
         },
-        addInfo: function(tips, e) {
-          e.preventDefault();
+        addInfo: function(e) {
+
           var obj = {
             username: this.username,
             age: this.age,
             favorite: this.favorite
+          }
+          if (obj.username==='' || obj.age === null || obj.favorite === '' ){
+            alert('内容填写不完整，请重新填写')
+            return false;
           }
           this.info.push(obj)
           this.save()
