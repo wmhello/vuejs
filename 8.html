@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单的常规处理</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <form class="form-form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">姓名</label>
+           <div class="col-sm-10">
+             <input type="text" class="form-control" v-model="student.name">
+           </div>
+        </div>
+        <div class="form-group clearfix">
+          <label class="col-sm-2 control-label">性别</label>
+           <div class="col-sm-10">
+             <label class="radio-inline">
+              <input type="radio" value="男" v-model="student.sex">男
+            </label>
+            <label class="radio-inline">
+              <input type="radio"  value="女" v-model="student.sex">女
+            </label>
+           </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">年龄</label>
+           <div class="col-sm-10">
+             <input type="number" class="form-control" v-model.number="student.age">
+           </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">民族</label>
+           <div class="col-sm-10">
+             <select class="form-control"  v-model="student.mz">
+                <option v-for="(item,index) in mzs"  :key="index">{{item}}</option>
+             </select>
+           </div>
+        </div>
+        <div class="form-group clearfix">
+          <label class="col-sm-2 control-label">兴趣爱好</label>
+           <div class="col-sm-10">
+             <template v-for="(item,index) in favs">
+
+             <input type="checkbox" :value="item" :key="index" v-model="student.fav">{{item}}
+
+           </template>
+           </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">专业</label>
+           <div class="col-sm-10">
+             <template v-for="(item,index) in pros">
+             <input type="radio" :value="item" :key="index" v-model="student.profession" />{{item}}
+           </template>
+           </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { // 以数据为中心， 数据改变，界面就跟随改变
+        str: 'hello, world',
+        student: {
+          name: '',
+          sex: ' ',
+          age: null,
+          fav: [ ],
+          mz: '',
+          profession: '',
+        },
+        favs: ['游戏', '电脑', '运动', '篮球'],
+        mzs: ['汉族','彝族', '白族'],
+        pros: ['软件工程', '计算机科学与技术', '汉语言文学', '会计']
+      },
+    })
+  </script>
+</body>
+
+</html>

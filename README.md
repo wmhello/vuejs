@@ -10,6 +10,8 @@
 
 [第五节 常用的指令](./5.md)
 
-[第六节 结合bootstrap和web storage来改进表单](./6.md)
+[第六、七节 结合bootstrap和web storage来改进表单](./6.md)
+
+[第八节 表单的处理](./8.md)
 
 [Render函数](./render.md)

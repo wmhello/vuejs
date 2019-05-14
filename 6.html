@@ -26,7 +26,8 @@
             <input type="text" class="form-control" ref="fav" @keyup.enter="addInfo" v-model="favorite" placeholder="请输入兴趣爱好">
           </div>
           <div class="form-group">
-            <button class="btn"  :class="{'btn-success': isComplete}"  v-html="title" @click="addInfo"></button>
+            <button v-if="isComplete" class="btn"  :class="{'btn-success': isComplete}"  v-html="title" @click="addInfo"></button>
+            <button v-else disabled class="btn"  :class="{'btn-success': isComplete}"  v-html="title" @click="addInfo"></button>
           </div>
         </div>
       </div>
