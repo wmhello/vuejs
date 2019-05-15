@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单的常规处理</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+       <my-div is-show="test" :info="str"></my-div>
+       <my-div :info="str"></my-div>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script type="text/javascript">
+
+
+    Vue.component("my-div", {
+      template: "<div>\
+        <h1 v-if='isShow'>显示标题</h1>\
+        <p v-else>显示内容{{info}}</p>\
+      </div>",
+      data: function() {
+        return {
+          name: '我是自定义组件'
+        }
+      },
+      props:{
+        info: {
+          type: String,
+          required: true
+        },
+        isShow: {
+          type: Boolean,
+          required: true,
+          default: false
+        }
+      },
+      filters: {
+
+      },
+      computed: {
+
+      },
+      watch: {
+
+      },
+      methods: {
+
+      },
+      created: function(){
+        
+      }
+
+    })
+
+    var app = new Vue({
+      el: '#app',
+      data: { // 以数据为中心， 数据改变，界面就跟随改变
+        str: 'hello, world',
+        test: '父子组件数据传送'
+      }
+    })
+  </script>
+</body>
+
+</html>
