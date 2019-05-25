@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义组件-alert</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <style media="screen">
+    .alert-close{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+    div.alert{
+     position: relative;
+     width: 70%;
+     margin-top: 5px;
+    }
+    div.alert footer{
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <v-alert type="success" close @alert-close="clearData">
+        <template v-slot:title>我的标题</template>
+         操作成功
+        <template v-slot:footer>
+          <button class="btn btn-success">保存</button>
+        </template>
+      </v-alert>
+      <v-alert>
+        请注意查看数据是否保存
+      </v-alert>
+      <v-alert type="info" close>
+       <template v-slot:title>
+           提示
+       </template>
+        内容是否保存数据
+        <template v-slot:footer>
+          <v-btn type="success" @btn-click="save">保存</v-btn>
+          <v-btn type="danger" @btn-click="cancel">取消</v-btn>
+        </template>
+      </v-alert>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script type="text/javascript" src='./v-alert.js'></script>
+  <script type="text/javascript" src='./v-btn.js'></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { // 以数据为中心， 数据改变，界面就跟随改变
+      },
+      methods: {
+        clearData: function() {
+          console.log('警告框关闭后，我执行清除操作');
+        },
+      save: function() {
+        console.log('数据保存');
+      },
+      cancel: function() {
+        console.log('数据取消')
+      }
+    }
+    })
+  </script>
+</body>
+
+</html>

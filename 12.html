@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义组件-alert</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+  <style media="screen">
+    .alert-close{
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+    div.alert{
+     position: relative;
+     width: 70%;
+     margin-top: 5px;
+    }
+    div.alert footer{
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="app">
+      <v-alert type="info" close>
+        <template v-slot:title>
+          提示
+        </template>
+        内容是否保存数据
+        <template v-slot:footer>
+          <v-btn type="success" @btn-click="save">下载文件</v-btn>
+          <v-btn type="danger" @btn-click="cancel">取消</v-btn>
+        </template>
+      </v-alert>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/es6-promise/4.1.1/es6-promise.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+  <script type="text/javascript" src='./v-alert.js'></script>
+  <script type="text/javascript" src='./v-btn.js'></script>
+  <script type="text/javascript" src='./12.js'></script>
+</body>
+
+
+
+</html>
