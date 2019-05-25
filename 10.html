@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义组件</title>
+  <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div id="app">
+      <v-btn  type="success" size="lg" @btn-click="save">       
+           <a href="http://www.baidu.com">百度</a>
+      </v-btn>
+      <v-btn title="删除" type="danger" @btn-click="del" size="lg"></v-btn>
+      <v-btn title="退出" size="sm"></v-btn>
+    </div>
+    <a href="http://www.baidu.com">百度</a>
+    <button>保存</button>
+  </div>
+
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+  <script type="text/javascript" src='./v-btn.js'></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: { // 以数据为中心， 数据改变，界面就跟随改变
+        str: 'hello, world',
+        test: '父子组件数据传送',
+        title: '保存数据'
+      },
+      methods: {
+        save: function(params){
+          this.title = params
+          alert('数据已经保存')
+        },
+        del: function(params) {
+          console.log(params);
+          alert('数据已经删除')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

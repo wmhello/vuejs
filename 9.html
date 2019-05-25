@@ -5,13 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>表单的常规处理</title>
+  <title>自定义组件</title>
   <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <div id="app">
-       <my-div is-show="test" :info="str"></my-div>
+       <my-div is-show="test" info="str"></my-div>
        <my-div :info="str"></my-div>
     </div>
   </div>
@@ -54,7 +54,7 @@
 
       },
       created: function(){
-        
+
       }
 
     })
