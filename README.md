@@ -26,4 +26,11 @@
 
 [第十四节 认识vue-router插件](./14.md)
 
+[第十五节 vue-router插件应用](./15.md)
+
+[第十六节 vue-router路由传参和路由守卫](./16.md)
+
+[第十七节 vue-router路由元信息](./17.md)
+
+
 [Render函数](./render.md)

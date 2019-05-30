@@ -1,5 +1,5 @@
 {
-  "name": "router",
+  "name": "router2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,15 +7,16 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
     "mescroll.js": "^1.4.1",
     "vue": "^2.6.10",
-    "vue-router": "^3.0.6"
+    "vue-router": "^3.0.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
-    "vue-template-compiler": "^2.5.21"
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
     "plugins": {
