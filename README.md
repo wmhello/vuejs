@@ -32,5 +32,9 @@
 
 [第十七节 vue-router路由元信息](./17.md)
 
+[第十八节 vuex的安装与配置](./18.md)
+
+[第十八节 vuex的初步学习](./19.md)
+
 
 [Render函数](./render.md)
