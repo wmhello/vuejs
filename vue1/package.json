@@ -8,7 +8,7 @@
     "start": "npm run serve"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "core-js": "^2.6.5",
     "laravel-echo": "^1.5.3",
     "socket.io-client": "^2.2.0",
